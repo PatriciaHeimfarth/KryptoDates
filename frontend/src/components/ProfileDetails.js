@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal'
 import "bootstrap/dist/css/bootstrap.css";
 const contractAddress = "0x4e0b73a755EBCC5652eA55099008eC0Bd3D5CD0a"
 
-function ProfileDetails() {
+function ProfileDetails(props) {
     const [currentAccount, setCurrentAccount] = useState(null);
     const [show, setShow] = useState(false);
 
@@ -18,7 +18,7 @@ function ProfileDetails() {
 
     useEffect(() => {
         getProfile();
-
+        console.log(props)
         if (!currentAccount) {
             checkWalletIsConnected();
         }
@@ -93,7 +93,7 @@ function ProfileDetails() {
             const params = [
                 {
                     from: currentAccount,
-                    to: "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",//profile.owner,
+                    to: profile.owner,
                     value: '0x89a2241af62c0000',
                     gas: '0x2710',
                 },
@@ -125,7 +125,7 @@ function ProfileDetails() {
         <div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Your message</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -147,7 +147,7 @@ function ProfileDetails() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <Image roundedCircle style={{ height: 'auto', width: '20%' }} src="/uploads/1655118971836-mark-cruz-ov0u44cygdm-unsplash.jpg"></Image>
+            <Image roundedCircle style={{ height: 'auto', width: '20%' }} src={props.image}></Image>
             <Button onClick={writeMessage}>Send</Button>
         </div>
     );

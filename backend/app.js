@@ -58,7 +58,7 @@ app.get('/', (req, res) => {
 
 const upload = multer({
     storage: multer.diskStorage({
-        destination: path.join('/home/patricia/Schreibtisch/trondates/frontend/public/uploads'),
+        destination: path.join('/'), //PATH 
         filename: (req, file, cb) => {
             const name = slugify(file.originalname, { lower: true })
             cb(null, `${new Date().getTime()}-${name}`)

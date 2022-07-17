@@ -126,7 +126,7 @@ function App() {
   return (
     <div>
        
-      <ProfileDetails></ProfileDetails>
+      <ProfileDetails image="/uploads/ga-RBerxXPnZPE-unsplash.jpg"></ProfileDetails>
 
        
     </div>
